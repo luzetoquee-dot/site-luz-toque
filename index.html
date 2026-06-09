@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luz & Toque | Massagem Holística</title>
+
+  <style>
+    :root{
+      --cream:#f3ede3;
+      --cream2:#e9e0ce;
+      --green:#285f3d;
+      --green-dark:#143c29;
+      --green-soft:#a8c3a7;
+      --text:#2d2d2d;
+      --muted:#776f66;
+      --line:#c9bead;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      background:var(--cream);
+      color:var(--text);
+      font-family:Arial, sans-serif;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .topbar{
+      height:82px;
+      padding:0 6%;
+      background:var(--cream);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .brand{
+      font-family:Georgia, serif;
+      text-transform:uppercase;
+      letter-spacing:7px;
+      color:var(--green);
+      font-size:20px;
+      text-decoration:none;
+    }
+
+    .menu{
+      display:flex;
+      gap:36px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:13px;
+    }
+
+    .hero{
+      min-height:calc(100vh - 82px);
+      background:var(--green);
+      color:var(--cream);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      padding:80px 20px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:310px;
+      height:310px;
+      border-radius:50%;
+      background:rgba(255,255,255,.06);
+      top:-40px;
+      right:8%;
+    }
+
+    .eyebrow,
+    .section-label{
+      color:var(--green-soft);
+      text-transform:uppercase;
+      letter-spacing:6px;
+      font-size:13px;
+      font-weight:bold;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-family:Georgia, serif;
+      font-weight:400;
+      font-size:clamp(56px,7vw,105px);
+      line-height:.95;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero h1 span{
+      display:block;
+      font-style:italic;
+      color:var(--green-soft);
+      margin-top:12px;
+    }
+
+    .hero-subtitle{
+      font-family:Georgia, serif;
+      font-style:italic;
+      color:rgba(243,237,227,.75);
+      font-size:22px;
+      margin-top:30px;
+    }
+
+    .outline-button{
+      margin-top:45px;
+      padding:18px 52px;
+      border:1px solid rgba(243,237,227,.75);
+      color:var(--green-soft);
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    section{
+      padding:95px 6%;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+      background:var(--cream);
+    }
+
+    .photo-card{
+      background:#d4cbb8;
+      height:560px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .photo-card img{
+      height:100%;
+      object-fit:cover;
+    }
+
+    .photo-card span{
+      position:absolute;
+      bottom:24px;
+      left:0;
+      right:0;
+      text-align:center;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:13px;
+    }
+
+    .about-text{
+      max-width:560px;
+    }
+
+    .about-text h2{
+      font-family:Georgia, serif;
+      color:var(--green);
+      font-size:54px;
+      font-weight:400;
+      line-height:1.05;
+      margin-bottom:28px;
+    }
+
+    .about-text h2 span{
+      display:block;
+      font-style:italic;
+    }
+
+    .about-text p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.9;
+      margin-bottom:24px;
+    }
+
+    blockquote{
+      border-left:2px solid var(--green);
+      padding-left:24px;
+      margin:30px 0;
+      color:var(--green);
+      font-family:Georgia, serif;
+      font-style:italic;
+      font-size:22px;
+      line-height:1.7;
+    }
+
+    .sessions{
+      background:var(--cream2);
+      text-align:center;
+    }
+
+    .sessions .section-label{
+      color:var(--green);
+    }
+
+    .sessions h2{
+      font-family:Georgia, serif;
+      color:var(--green);
+      font-size:52px;
+      font-weight:400;
+      margin-bottom:10px;
+    }
+
+    .sessions-subtitle{
+      color:var(--muted);
+      margin-bottom:55px;
+    }
+
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:26px;
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .session-card{
+      background:var(--cream);
+      border:1px solid var(--line);
+      text-align:left;
+      padding:34px;
+      min-height:180px;
+    }
+
+    .icon{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:var(--green);
+      color:var(--green-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      margin-bottom:22px;
+    }
+
+    .session-card h3{
+      font-family:Georgia, serif;
+      font-weight:400;
+      font-size:21px;
+      margin-bottom:10px;
+    }
+
+    .session-card p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .certificate{
+      display:grid;
+      grid-template-columns:.75fr 1.25fr;
+      gap:65px;
+      align-items:center;
+      background:var(--cream);
+      border-bottom:7px solid var(--green);
+    }
+
+    .certificate-image{
+      background:var(--green-soft);
+      border:1px solid #8aac8e;
+      padding:20px;
+      min-height:180px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .certificate-image img{
+      max-height:170px;
+      object-fit:contain;
+    }
+
+    .certificate-text h2{
+      font-family:Georgia, serif;
+      font-weight:400;
+      color:var(--green);
+      font-size:36px;
+      margin-bottom:14px;
+    }
+
+    .certificate-text p{
+      color:var(--muted);
+      line-height:1.8;
+      max-width:760px;
+    }
+
+    .offer{
+      background:var(--green);
+      color:var(--cream);
+      text-align:center;
+      padding:70px 6% 80px;
+    }
+
+    .offer h2{
+      font-family:Georgia, serif;
+      font-weight:400;
+      font-size:56px;
+      margin-bottom:14px;
+    }
+
+    .offer-subtitle{
+      color:var(--green-soft);
+      margin-bottom:44px;
+    }
+
+    .price-box{
+      max-width:520px;
+      margin:0 auto;
+      border:1px solid rgba(243,237,227,.28);
+      background:rgba(243,237,227,.06);
+      padding:45px;
+    }
+
+    .price-box strong{
+      display:block;
+      font-family:Georgia, serif;
+      font-size:68px;
+      font-weight:400;
+      color:var(--green-soft);
+    }
+
+    .price-box span{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--green-soft);
+      font-size:12px;
+      margin:6px 0 28px;
+    }
+
+    .price-box p{
+      color:var(--green-soft);
+      line-height:1.7;
+      margin-bottom:30px;
+    }
+
+    .whatsapp-button{
+      display:block;
+      color:var(--cream);
+      border:1px solid rgba(243,237,227,.35);
+      text-decoration:none;
+      padding:16px 24px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-weight:bold;
+    }
+
+    .footer{
+      height:78px;
+      padding:0 6%;
+      background:var(--green-dark);
+      color:var(--green-soft);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-family:Georgia, serif;
+      letter-spacing:4px;
+      text-transform:uppercase;
+    }
+
+    .footer a{
+      color:var(--green-soft);
+      text-decoration:none;
+      letter-spacing:0;
+      text-transform:none;
+    }
+
+    @media(max-width:900px){
+      .menu{display:none}
+
+      .brand{
+        font-size:16px;
+        letter-spacing:4px;
+      }
+
+      .hero h1{
+        font-size:54px;
+      }
+
+      .about,
+      .certificate{
+        grid-template-columns:1fr;
+      }
+
+      .cards-grid{
+        grid-template-columns:1fr;
+      }
+
+      .photo-card{
+        height:420px;
+      }
+
+      section{
+        padding:70px 24px;
+      }
+
+      .sessions h2,
+      .offer h2{
+        font-size:40px;
+      }
+
+      .footer{
+        height:auto;
+        padding:28px;
+        flex-direction:column;
+        gap:12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="#inicio" class="brand">Luz & Toque</a>
+
+    <nav class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#sessoes">Sessões</a>
+      <a href="#agendar">Agendar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <p class="eyebrow">Massagem Holística • Santa Catarina e Região</p>
+
+      <h1>
+        O corpo sabe
+        <span>o que precisa soltar</span>
+      </h1>
+
+      <p class="hero-subtitle">Um espaço de escuta, presença e cura integrativa</p>
+
+      <a class="outline-button" href="#agendar">Agendar sessão</a>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="photo-card">
+        <img src="img/wallison.jpg" alt="Foto de Wallison Castro">
+        <span>Foto de Wallison</span>
+      </div>
+
+      <div class="about-text">
+        <p class="section-label">Quem sou eu</p>
+
+        <h2>
+          Wallison
+          <span>Castro</span>
+        </h2>
+
+        <p>
+          Minha jornada até aqui não começou apenas com a massagem — começou com
+          o autoconhecimento e a escuta profunda do que a vida foi me convidando
+          a transformar.
+        </p>
+
+        <blockquote>
+          “A massagem, para mim, não é apenas uma técnica — é um ato terapêutico.”
+        </blockquote>
+
+        <p>
+          Sou formado em Massagem Terapêutica e Reiki Nível 1, estudo numerologia
+          e caminho junto a saberes ancestrais e práticas de expansão da consciência.
+        </p>
+      </div>
+    </section>
+
+    <section id="sessoes" class="sessions">
+      <p class="section-label">O que você encontra</p>
+
+      <h2>Cada sessão é única</h2>
+
+      <p class="sessions-subtitle">Como você, cada atendimento tem seu próprio ritmo</p>
+
+      <div class="cards-grid">
+        <article class="session-card">
+          <div class="icon">↝</div>
+          <h3>Massagem Relaxante</h3>
+          <p>Para desacelerar a mente e liberar tensões do corpo.</p>
+        </article>
+
+        <article class="session-card">
+          <div class="icon">≋</div>
+          <h3>Sound Healing</h3>
+          <p>Frequências de cura que reequilibram sua vibração interna.</p>
+        </article>
+
+        <article class="session-card">
+          <div class="icon">✦</div>
+          <h3>Limpeza de Chakras</h3>
+          <p>Pedras e energia para restaurar seu equilíbrio.</p>
+        </article>
+
+        <article class="session-card">
+          <div class="icon">☽</div>
+          <h3>Aromaterapia</h3>
+          <p>Óleos essenciais para acalmar emoções e trazer paz.</p>
+        </article>
+
+        <article class="session-card">
+          <div class="icon">♧</div>
+          <h3>Massagem nos Pés</h3>
+          <p>Alívio de dores e ativação dos pontos energéticos.</p>
+        </article>
+
+        <article class="session-card">
+          <div class="icon">☼</div>
+          <h3>Reiki</h3>
+          <p>Canal de energia universal para cura e reconexão.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="certificate">
+      <div class="certificate-image">
+        <img src="img/certificado.jpg" alt="Certificado profissional de Wallison Castro">
+      </div>
+
+      <div class="certificate-text">
+        <h2>Formação Profissional</h2>
+        <p>
+          Certificado em Massagem Terapêutica pelo Instituto Massage —
+          instituição credenciada pela ABRATH/CJAH-BR.
+        </p>
+      </div>
+    </section>
+
+    <section id="agendar" class="offer">
+      <p class="section-label">Oferta especial</p>
+
+      <h2>Primeiros 20 atendimentos</h2>
+
+      <p class="offer-subtitle">Valor especial de lançamento para quem chegar primeiro</p>
+
+      <div class="price-box">
+        <strong>R$ 90</strong>
+        <span>por sessão completa</span>
+
+        <p>Inclui massagem + técnica energética escolhida na consulta</p>
+
+        <a href="https://wa.me/554792375963" target="_blank" class="whatsapp-button">
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Luz & Toque</span>
+    <a href="https://wa.me/554792375963" target="_blank">(47) 9 9237-5963</a>
+  </footer>
+</body>
+</html>
